@@ -9,7 +9,7 @@ import { MenuSide } from 'components/menu-side/MenuSide';
 
 export interface IChoosedChatId {
   user_id:number,
-    chat_id:number
+  chat_id:number
 }
 
 function App() {
