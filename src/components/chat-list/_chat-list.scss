@@ -1,6 +1,5 @@
 .chat {
     &__list {
-    padding: 0 10px;
     max-height: 100vh;
 }
 
@@ -9,7 +8,7 @@
         font-size: 25px;
         color: $c-blue;
     }
-    
+
     &__items {
         overflow-y: auto;
         max-height: 60vh;

@@ -26,6 +26,15 @@ export const ChatList: React.FC<IChatListProps> =({chats, searchRequets})=> {
        console.log(chats)  //TODO придумать как сразу рендерить список!
     }, [])
 
+    // const lastMsgs= chats.map(item => item.messages[item.messages.length-1]);
+    // console.log('gfgfg', lastMsgs)
+
+    chats.sort((a,b)=> 
+    new Date(b.messages[b.messages.length-1].time[0].split('.').reverse().join('-') + `T` 
+    + b.messages[b.messages.length-1].time.join(',').substring(12)).getTime() - new Date(a.messages[a.messages.length-1].time[0].split('.').reverse().join('-') + `T` 
+    + a.messages[a.messages.length-1].time.join(',').substring(12)).getTime());
+    
+    // console.log('gfgfg', lastMsgs)
 
     const renderList = chats.filter(item => item.user_name.toLowerCase().startsWith(searchRequets.toLowerCase())|| item.user_surname.toLowerCase().startsWith(searchRequets.toLowerCase()))
     

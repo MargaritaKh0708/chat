@@ -30,7 +30,11 @@ export const ExtendedChat: React.FC<IExtendedChatProps> = ({chats, choosed_id}) 
                     </div>
                     <ChatHistory choosed_chat={item} choosed_id={chooseId}/></div>
                 ))}
-                <EntryField setTypeMsgHandler={setNewMsg} typeMsg={newMsg}/>
+                <EntryField
+                setTypeMsgHandler={setNewMsg}
+                typeMsg={newMsg}
+                chat={renderItem}
+      />
         </div>
     )
 }

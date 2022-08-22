@@ -4,6 +4,10 @@
     padding: 20px 10px;
     display: flex;
 
+    &:last-child {
+        border: none;
+    }
+
 
     &__main-info {
         justify-content: space-between;
@@ -24,8 +28,13 @@
     }
 
     &__last-msg {
-        color: $c-font;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        line-height: 18px;
+        overflow: hidden;
         font-size: 14px;
+        color: $c-font;
     }
 
     &__last-msg-time {

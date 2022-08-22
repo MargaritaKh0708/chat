@@ -110,6 +110,9 @@ ul {
   padding: 20px 10px;
   display: flex;
 }
+.dialog:last-child {
+  border: none;
+}
 .dialog__main-info {
   justify-content: space-between;
   flex-direction: column;
@@ -126,8 +129,13 @@ ul {
   font-size: 16px;
 }
 .dialog__last-msg {
-  color: #868686;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  line-height: 18px;
+  overflow: hidden;
   font-size: 14px;
+  color: #868686;
 }
 .dialog__last-msg-time {
   color: #656565;
@@ -137,6 +145,7 @@ ul {
 .chat-history {
   overflow-y: auto;
   max-height: 80vh;
+  padding: 10px;
 }
 .chat-history::-webkit-scrollbar {
   width: 0;
@@ -196,7 +205,6 @@ ul {
 }
 
 .chat__list {
-  padding: 0 10px;
   max-height: 100vh;
 }
 .chat__title {
@@ -215,6 +223,7 @@ ul {
 .chat-history {
   overflow-y: auto;
   max-height: 80vh;
+  padding: 10px;
 }
 .chat-history::-webkit-scrollbar {
   width: 0;
@@ -274,10 +283,12 @@ ul {
 }
 
 .chat-menu {
+  border: 1px solid #dbdbdb;
   flex: 1;
 }
 
 .extended-chat {
+  border-right: 1px solid #dbdbdb;
   flex-direction: column;
   display: flex;
   width: 100%;

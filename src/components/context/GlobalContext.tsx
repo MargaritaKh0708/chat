@@ -5,14 +5,14 @@ import {Dispatch, SetStateAction} from 'react'
 import {IMessagesItem, IChatLineItemProps} from 'components/chat-line/ChatLine';
 
 
-export type GlobalContext = {
+export type GlobalContextType = {
   chooseId: IChoosedChatId;
   setChooseId: Dispatch<SetStateAction<IChoosedChatId>>;
   userMessageHistory:IMessagesItem[];
   setUserMessageHistory:(value:IMessagesItem[])=>void;
 };
 
-export const GlobalContext = React.createContext<GlobalContext>({
+export const GlobalContext = React.createContext<GlobalContextType>({
     chooseId: {user_id:0,
       chat_id:0},
     setChooseId: () => {},

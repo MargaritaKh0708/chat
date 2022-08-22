@@ -18,24 +18,6 @@ export const ChatHistory: React.FC<IChatHistoryProps> = ({
   const { chooseId, userMessageHistory, setUserMessageHistory } =
     useGlobalContext();
 
-//     useEffect(() => {
-//       const messageHistory:IMessagesItem[] = JSON.parse(localStorage.getItem('messageHistory') || '[]');
-//       setUserMessageHistory(messageHistory);
-
-//       if (!messageHistory.length) {
-//         return 
-//       }
-//       const findMsg:IMessagesItem[] = messageHistory.filter(item => item.chat_id === choosed_chat.chat_id);
-//       setNewChatMsg(findMsg);
-//       console.log(findMsg)
-// }, [])
-
-  // useEffect(()=> {
-  //    newChatMsg.forEach(msg => choosed_chat.messages.push(msg));
-  //     console.log(choosed_chat)
-  // }, [newChatMsg]) //придумать как обновлять - связвть с Онклик!
-     
-
   return (
     <div className="chat-history">
       {choosed_chat.messages.length !== 0 ? (
