@@ -59,6 +59,10 @@ ul {
     position: relative;
     height: 50px;
     width: 50px;
+   
+    &.flex {
+        flex: 1 0 auto;
+    }
 
     & img:first-child {
       border-radius: 50%;

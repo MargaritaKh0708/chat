@@ -7,7 +7,8 @@ import {useState}  from 'react'
 
 export interface IExtendedChatProps {
     chats:IChatLineItemProps[];
-    choosed_id:number;
+    choosed_id:{user_id:number,
+        chat_id:number};
 }
 
 
@@ -15,7 +16,7 @@ export const ExtendedChat: React.FC<IExtendedChatProps> = ({chats, choosed_id}) 
 
     const [newMsg, setNewMsg] = useState<string>('');
 
-    const renderItem:IChatLineItemProps[] = chats.filter(chat => chat.user_id === choosed_id);
+    const renderItem:IChatLineItemProps[] = chats.filter(chat => chat.user_id === choosed_id.user_id);
 
     const {chooseId} = useGlobalContext()
 

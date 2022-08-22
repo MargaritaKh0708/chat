@@ -7,10 +7,15 @@ import {IMessagesItem} from 'components/chat-line/ChatLine'
 import {ExtendedChat} from 'components/extended-chat/ExtendedChat'
 import { MenuSide } from 'components/menu-side/MenuSide';
 
+export interface IChoosedChatId {
+  user_id:number,
+    chat_id:number
+}
 
 function App() {
 
-  const [chooseId, setChooseId] = useState<number>(0);
+  const [chooseId, setChooseId] = useState<IChoosedChatId>({user_id:0,
+      chat_id:0});
   const [userMessageHistory, setUserMessageHistory] = useState<IMessagesItem[]>([]);
 
   

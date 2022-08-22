@@ -91,6 +91,9 @@ ul {
   height: 50px;
   width: 50px;
 }
+.user-logo.flex {
+  flex: 1 0 auto;
+}
 .user-logo img:first-child {
   border-radius: 50%;
 }
@@ -131,6 +134,13 @@ ul {
   font-size: 14px;
 }
 
+.chat-history {
+  overflow-y: auto;
+  max-height: 80vh;
+}
+.chat-history::-webkit-scrollbar {
+  width: 0;
+}
 .chat-history__msg {
   align-items: flex-start;
   display: flex;
@@ -202,6 +212,13 @@ ul {
   width: 0;
 }
 
+.chat-history {
+  overflow-y: auto;
+  max-height: 80vh;
+}
+.chat-history::-webkit-scrollbar {
+  width: 0;
+}
 .chat-history__msg {
   align-items: flex-start;
   display: flex;

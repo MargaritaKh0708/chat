@@ -30,7 +30,7 @@ export const ChatLine: React.FC<IChatLineProps>= ({item, setChooseUserDataHandle
     return (
         <div className='dialog' key={item.chat_id} onClick={setChooseUserDataHandler}>
             <div className='dialog__main-content'>
-                <Avatar avatar={item.photo} status={true}/>
+                <Avatar avatar={item.photo} status={true} additional_class_name='flex'/>
                 <div className='dialog__main-info'>  
                 <p className='dialog__title'> {item.user_name} {item.user_surname}</p>
                 <p className='dialog__last-msg'>{item.messages[item.messages.length-1].text}</p></div> 

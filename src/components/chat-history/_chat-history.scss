@@ -1,5 +1,10 @@
 .chat-history{
 
+    overflow-y: auto;
+    max-height: 80vh;
+
+    &::-webkit-scrollbar { width: 0; }
+
     &__msg {
         align-items: flex-start;
         display: flex;

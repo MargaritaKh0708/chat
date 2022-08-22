@@ -1,9 +1,12 @@
-import {IChatLineItemProps } from "components/chat-line/ChatLine";
+import {IChatLineItemProps, IMessagesItem } from "components/chat-line/ChatLine";
+import { useGlobalContext } from 'components/context/GlobalContext';
 import { Avatar } from "components/UI/avatar/Avatar";
+import { useEffect , useState} from "react";
 
 export interface IChatHistoryProps {
   choosed_chat:IChatLineItemProps;
-  choosed_id: number;
+  choosed_id: {user_id:number,
+    chat_id:number};
 }
 
 export const ChatHistory: React.FC<IChatHistoryProps> = ({
@@ -11,32 +14,33 @@ export const ChatHistory: React.FC<IChatHistoryProps> = ({
   choosed_id,
 }) => {
 
-  // //*Buy something
-  // const addToCartHandler: () => void = () => {
-  //   // get products in cart from localStorage
-  //   const orderProducts = JSON.parse(localStorage.getItem('newMsgArray') || '[]');
+  // const [newChatMsg, setNewChatMsg] = useState<IMessagesItem[]>([])
+  const { chooseId, userMessageHistory, setUserMessageHistory } =
+    useGlobalContext();
 
-  //     // add product to cart
-  //     const orderItems = orderProducts.filter(
-  //       (order: IOrder) => order.productId === product.id // compare good id that we choose with that which in basket already
-  //     );
-  //     if (orderItems.length === 0) {
-  //       localStorage.setItem(
-  //         'order',
-  //         JSON.stringify([
-  //           ...orderProducts,
-  //           { time: new Date().toLocaleString().split(','), , credit: false },
-  //         ])
-  //       );
-  //     }
-  //   }
-  // };
+//     useEffect(() => {
+//       const messageHistory:IMessagesItem[] = JSON.parse(localStorage.getItem('messageHistory') || '[]');
+//       setUserMessageHistory(messageHistory);
+
+//       if (!messageHistory.length) {
+//         return 
+//       }
+//       const findMsg:IMessagesItem[] = messageHistory.filter(item => item.chat_id === choosed_chat.chat_id);
+//       setNewChatMsg(findMsg);
+//       console.log(findMsg)
+// }, [])
+
+  // useEffect(()=> {
+  //    newChatMsg.forEach(msg => choosed_chat.messages.push(msg));
+  //     console.log(choosed_chat)
+  // }, [newChatMsg]) //придумать как обновлять - связвть с Онклик!
+     
 
   return (
     <div className="chat-history">
       {choosed_chat.messages.length !== 0 ? (
         choosed_chat.messages.map((msg) =>
-          msg.user_id === choosed_id ? (
+          msg.user_id === choosed_id.user_id ? (
             <div className='chat-history__msg'>
             <Avatar status={false} avatar={choosed_chat.photo}/>
             <div className='chat-history__incoming-content'> <div className="chat-history__incoming-msg">
