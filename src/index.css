@@ -51,7 +51,6 @@ body {
 .App {
   min-height: 100vh;
   overflow: hidden;
-  display: flex;
 }
 
 img {
@@ -104,10 +103,15 @@ ul {
   right: 0;
 }
 
+.chat-page {
+  display: flex;
+}
+
 .dialog {
   justify-content: space-between;
   border-bottom: 1px solid #dbdbdb;
   padding: 20px 10px;
+  cursor: pointer;
   display: flex;
 }
 .dialog:last-child {
@@ -315,12 +319,17 @@ ul {
   padding: 15px;
 }
 .type-line__field {
+  justify-content: space-between;
+  align-items: center;
   background: #fff;
   border-radius: 30px;
+  padding: 0 10px;
+  display: flex;
   width: 100%;
 }
 .type-line__input {
+  border-radius: 50%;
+  padding: 10px;
   border: none;
-  padding: 5px;
   width: 80%;
 }/*# sourceMappingURL=index.css.map */
