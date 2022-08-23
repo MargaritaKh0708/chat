@@ -1,0 +1,36 @@
+.authorization {
+
+    &__page {
+        height: 100vh;
+    }
+
+   &__form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+
+        &-wrapper{
+    box-shadow: 8px 8px 17px 1px $c-incoming-msg-bg;
+    border: 1px solid $c-separator;
+    @extend .authorization__form;
+    border-radius: 10px;
+    padding: 30px;
+    height: auto;
+}
+
+&-text {
+    color: $c-font;
+}}
+
+    &__btn {
+        border: 1px solid $c-separator !important;  
+        border-radius: 10px !important;
+        box-shadow: none !important;
+        padding: 0 5px !important;
+        cursor: pointer;
+        opacity: 1;
+    } 
+
+}

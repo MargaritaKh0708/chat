@@ -1,8 +1,9 @@
-import {IChatLineItemProps} from 'components/chat-line/ChatLine'
 import {useGlobalContext } from 'components/context/GlobalContext'
 import { ChatHistory } from 'components/chat-history/ChatHistory';
-import { Avatar } from 'components/UI/avatar/Avatar';
+import {IChatLineItemProps} from 'components/chat-line/ChatLine'
 import {EntryField} from 'components/entry-field/EntryField'
+import { ModalWindow } from 'components/modal/ModalWindow';
+import { Avatar } from 'components/UI/avatar/Avatar';
 import {useState}  from 'react'
 
 export interface IExtendedChatProps {
@@ -15,7 +16,7 @@ export interface IExtendedChatProps {
 export const ExtendedChat: React.FC<IExtendedChatProps> = ({chats, choosed_id}) => {
 
     const [newMsg, setNewMsg] = useState<string>('');
-
+   
     const renderItem:IChatLineItemProps[] = chats.filter(chat => chat.user_id === choosed_id.user_id);
 
     const {chooseId} = useGlobalContext()
@@ -31,6 +32,7 @@ export const ExtendedChat: React.FC<IExtendedChatProps> = ({chats, choosed_id}) 
                     <ChatHistory choosed_chat={item} choosed_id={chooseId}/></div>
                 ))}
                 <EntryField
+                userName={choosed_id.chat_id>0 ? `${renderItem[0].user_name} ${renderItem[0].user_surname}` : '' }
                 setTypeMsgHandler={setNewMsg}
                 typeMsg={newMsg}
                 chat={renderItem}

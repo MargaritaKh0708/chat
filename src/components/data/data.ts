@@ -5,6 +5,9 @@ import avatar2 from "assets/images/avatar_3.jpeg";
 import avatar3 from "assets/images/avatar_4.jpeg";
 import avatar4 from "assets/images/avatar_5.jpeg";
 import avatar5 from "assets/images/avatar_6_Amanda-Wixted.jpeg";
+import avatar6 from "assets/images/avatar_7.jpeg";
+import avatar7 from "assets/images/avatar_8.jpeg";
+import avatar8 from "assets/images/avatar_9.jpeg";
 
 export const date = new Date();
 const mounth = date.getMonth();
@@ -80,5 +83,31 @@ export const data: IChatLineItemProps[] = [
     messages: [
       { user_id: 145326, chat_id: 6, text: "Hello, how are you", time: ['19.08.2022', ' 19:09:27'] },
     ],
+  },
+  {
+    user_id: 145327,
+    user_surname: "Zelenskiy",
+    user_name: "Vova",
+    chat_id: 7,
+    photo: avatar6,
+    messages: [
+    ],
+  },
+  {
+    user_id: 145328,
+    user_surname: "Zalyzhnyi",
+    user_name: "Valera",
+    chat_id: 8,
+    photo: avatar7,
+    messages: [
+    ],
+  },
+  {
+    user_id: 145329,
+    user_surname: "Arestovich",
+    user_name: "Oleksii",
+    chat_id: 9,
+    photo: avatar8,
+    messages: [],
   },
 ];

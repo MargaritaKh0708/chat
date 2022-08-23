@@ -105,11 +105,12 @@ ul {
 
 .chat-page {
   display: flex;
+  height: 100vh;
 }
 
 .dialog {
-  justify-content: space-between;
   border-bottom: 1px solid #dbdbdb;
+  justify-content: space-between;
   padding: 20px 10px;
   cursor: pointer;
   display: flex;
@@ -143,12 +144,14 @@ ul {
 }
 .dialog__last-msg-time {
   color: #656565;
+  text-align: end;
   font-size: 14px;
+  flex: 1 0 auto;
 }
 
 .chat-history {
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 75vh;
   padding: 10px;
 }
 .chat-history::-webkit-scrollbar {
@@ -226,7 +229,7 @@ ul {
 
 .chat-history {
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 75vh;
   padding: 10px;
 }
 .chat-history::-webkit-scrollbar {
@@ -302,7 +305,7 @@ ul {
   flex: 1 0 auto;
 }
 .extended-chat__header {
-  border-bottom: 1ps solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
   background: #f5f5f5;
   align-items: center;
   display: flex;
@@ -332,4 +335,72 @@ ul {
   padding: 10px;
   border: none;
   width: 80%;
+}
+
+.authorization__page {
+  height: 100vh;
+}
+.authorization__form, .authorization__form-wrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+.authorization__form-wrapper {
+  box-shadow: 8px 8px 17px 1px #3c4154;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  padding: 30px;
+  height: auto;
+}
+.authorization__form-text {
+  color: #868686;
+}
+.authorization__btn {
+  border: 1px solid #dbdbdb !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  padding: 0 5px !important;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.modal {
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+  transition: 0.5s;
+  position: fixed;
+  display: flex;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  z-index: 200;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+
+.modal.active {
+  pointer-events: all;
+  padding: 20px;
+  opacity: 1;
+}
+
+.modal__content {
+  border: 1px solid #dbdbdb;
+  background-color: #fff;
+  transform: scale(0.5);
+  transition: 0.4s all;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: 50vw;
+}
+
+.modal__content.active {
+  transform: scale(1);
 }/*# sourceMappingURL=index.css.map */

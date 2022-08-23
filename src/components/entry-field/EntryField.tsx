@@ -1,4 +1,5 @@
 import { useGlobalContext } from 'components/context/GlobalContext';
+import { ModalWindow } from 'components/modal/ModalWindow';
 import {
   IChatLineItemProps,
   IMessagesItem,
@@ -9,18 +10,23 @@ import axios from 'axios';
 interface IEntryFieldProps {
   setTypeMsgHandler: (value: string) => void;
   chat: IChatLineItemProps[];
+  userName: string;
   typeMsg: string;
 }
 
 export const EntryField: React.FC<IEntryFieldProps> = ({
   setTypeMsgHandler,
+  userName,
   typeMsg,
   chat,
 }) => {
-  const [needLoad, setNeedLoad] = useState(false); // helper-value
+  const [modalActive, setModalActive] = useState<boolean>(false) // for modal window
+  const [needLoad, setNeedLoad] = useState<boolean>(false); // helper-value
+  const [newMsgText, setNewMsgText] = useState<string>('') // for modal window content
   const { chooseId, userMessageHistory, setUserMessageHistory } =
-    useGlobalContext();
+    useGlobalContext(); // context values
 
+    // Update msg history from LocalStorage (componentDidMount)
     useEffect(() => {
         const messageHistory:IMessagesItem[] = JSON.parse(localStorage.getItem('messageHistory') || '[]');
         setUserMessageHistory(messageHistory)
@@ -28,6 +34,7 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
       }, []); 
     
 
+  // Update msg history from LocalStorage (componentDidUpdate)
   useEffect(() => {
     if (!needLoad) {
       return;
@@ -35,8 +42,9 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
     setTimeout(answer, 2000); //Change time
   }, [userMessageHistory]); 
 
-
+  // Answer
   async function answer() {
+
     const response = await axios.get('https://api.chucknorris.io/jokes/random');
 
     const message = {
@@ -50,9 +58,13 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
 
     localStorage.setItem('messageHistory', JSON.stringify(messageHistory));
     setUserMessageHistory(messageHistory);
+    setNewMsgText(response.data.value)
     addMessage(message);
     setNeedLoad(false);
+    setModalActive(true);
   }
+
+  // Memorize of chat's owner  msg
 
   const msgMemorized = () => {
     const message = {
@@ -77,6 +89,20 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
     }
   };
 
+
+   //ENTER press
+   const handleKeyDown = (event: React.KeyboardEvent<Element>) => {
+    if (event.keyCode === 13) {
+      sendMsgFunction();
+    }
+  };
+
+  //Button event function
+  const sendMsgFunction= ()=> {
+    msgMemorized(); 
+    setTypeMsgHandler('');
+  }
+
   return (
     <div className='type-line'>
       <label className='type-line__field'>
@@ -86,6 +112,7 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
             setTypeMsgHandler(e.currentTarget.value);
             console.log(typeMsg);
           }}
+          onKeyDown={handleKeyDown}
           placeholder='Type your message'
           className='type-line__input'
           name='type-line'
@@ -93,14 +120,20 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
         />
         <button
           type='submit'
+          
           onClick={() => {
-            msgMemorized();
+            sendMsgFunction()
           }}
           className='type-line__send-btn'
         >
           send
         </button>
       </label>
+      <ModalWindow  active={modalActive}
+      setActive={setModalActive}>
+        <p>{userName}</p>
+        <p>{newMsgText}</p>
+      </ModalWindow>
     </div>
   );
 };

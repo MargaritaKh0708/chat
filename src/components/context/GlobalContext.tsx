@@ -1,8 +1,20 @@
 import React from 'react';
 import { useContext } from 'react';
-import {IChoosedChatId} from 'App'
 import {Dispatch, SetStateAction} from 'react'
 import {IMessagesItem, IChatLineItemProps} from 'components/chat-line/ChatLine';
+
+
+
+export interface IChoosedChatId {
+  user_id:number,
+  chat_id:number
+}
+
+export interface IChatOwnerInfo {
+  chatOwnerPhoto: string;
+  chatOwnerName: string;
+  chatOwnerId:number;
+}
 
 
 export type GlobalContextType = {
@@ -10,6 +22,9 @@ export type GlobalContextType = {
   setChooseId: Dispatch<SetStateAction<IChoosedChatId>>;
   userMessageHistory:IMessagesItem[];
   setUserMessageHistory:(value:IMessagesItem[])=>void;
+  chatOwnerInfo: IChatOwnerInfo;
+  setChatOwnerInfo: Dispatch<SetStateAction<IChatOwnerInfo>>;
+ 
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
@@ -18,6 +33,10 @@ export const GlobalContext = React.createContext<GlobalContextType>({
     setChooseId: () => {},
     userMessageHistory:[],
   setUserMessageHistory:()=>{},
+  chatOwnerInfo: { chatOwnerPhoto: '',
+    chatOwnerName: '',
+    chatOwnerId:0},
+  setChatOwnerInfo: ()=>{}
 });
 
 export const useGlobalContext = () => useContext(GlobalContext);

@@ -1,6 +1,6 @@
 .dialog {
-    justify-content: space-between;
     border-bottom:1px solid $c-separator;
+    justify-content: space-between;
     padding: 20px 10px;
     cursor: pointer;
     display: flex;
@@ -40,7 +40,9 @@
 
     &__last-msg-time {
         color: $c-titles-font;
+        text-align: end;
         font-size: 14px;
+        flex: 1 0 auto;
     }
 }
 
