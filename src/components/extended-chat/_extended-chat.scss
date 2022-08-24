@@ -1,6 +1,7 @@
 .extended-chat {
     border-right: 1px solid $c-separator;
     flex-direction: column;
+    max-height: 100vh;
     display: flex;
     width: 100%;
     flex: 2;
@@ -33,6 +34,7 @@
         font-weight: 400;
         display: flex;
         padding: 10px;
+        height: 10vh;
         gap: 10px;
     }
 }

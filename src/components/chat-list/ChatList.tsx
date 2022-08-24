@@ -15,7 +15,6 @@ export const ChatList: React.FC<IChatListProps> = ({ chats, searchRequets }) => 
     // get msgHistory from local storage
     useEffect(() => {
         const messageHistory: IMessagesItem[] = JSON.parse(localStorage.getItem('messageHistory') || '[]');
-        console.log(messageHistory)
 
         chats.map(chat =>
             messageHistory.forEach(item => {
@@ -23,11 +22,9 @@ export const ChatList: React.FC<IChatListProps> = ({ chats, searchRequets }) => 
                     chat.messages.push(item)
                 }
             }))
-        console.log(chats)
     }, [])
 
     // Sort chat by last msg date
-
     chats.sort((a, b) =>
         b.messages.length && a.messages.length ?
             (new Date(b.messages[b.messages.length - 1].time[0].split('.').reverse().join('-') + `T`

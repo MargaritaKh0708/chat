@@ -6,13 +6,20 @@ import {
   IMessagesItem,
 } from 'components/chat-line/ChatLine';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 interface IEntryFieldProps {
   setTypeMsgHandler: (value: string) => void;
   chat: IChatLineItemProps[];
   userName: string;
   typeMsg: string;
+}
+
+interface IServerAnswer {
+  icon_url:string,
+  value:string,
+  url: string,
+  id: string
 }
 
 export const EntryField: React.FC<IEntryFieldProps> = ({
@@ -56,7 +63,7 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
   // Answer
   async function answer() {
 
-    const response = await axios.get('https://api.chucknorris.io/jokes/random');
+    try { const response = await axios.get<IServerAnswer>('https://api.chucknorris.io/jokes/random');
 
     const message = {
       time: new Date().toLocaleString().split(','),
@@ -72,7 +79,14 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
     setNewMsgText(response.data.value)
     addMessage(message);
     setNeedLoad(false);
-    setModalActive(true);
+    setModalActive(true);}
+
+    catch (e:unknown){
+      const error = e as AxiosError;
+      console.log(error.message)
+    }
+
+    
   }
 
   // Memorize of chat's owner  msg
@@ -91,7 +105,6 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
     setUserMessageHistory(messageHistory);
     addMessage(message);
     setNeedLoad(true);
-    console.log(userMessageHistory);
   };
 
   const addMessage: (message: IMessagesItem) => void = (message) => {
@@ -121,7 +134,6 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
           value={typeMsg}
           onChange={(e) => {
             setTypeMsgHandler(e.currentTarget.value);
-            console.log(typeMsg);
           }}
           onKeyDown={handleKeyDown}
           placeholder='Type your message'

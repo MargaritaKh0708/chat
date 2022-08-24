@@ -1,5 +1,5 @@
 * {
-    box-sizing:border-box;
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
@@ -17,9 +17,9 @@ body {
 
 .App {
     font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
-    
+
 }
 
 
@@ -64,13 +64,13 @@ ul {
     position: relative;
     height: 50px;
     width: 50px;
-   
+
     &.flex {
         flex: 1 0 auto;
     }
 
     & img:first-child {
-      border-radius: 50%;
+        border-radius: 50%;
     }
 
     & .online {
@@ -78,11 +78,10 @@ ul {
         width: 25%;
         bottom: 0;
         right: 0;
-      }
+    }
 }
 
-.chat-page{
+.chat-page {
     display: flex;
     height: 100vh;
 }
-
