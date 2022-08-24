@@ -477,6 +477,10 @@ ul {
 .authorization__btn div, .authorization__trial div {
   border-radius: 20px !important;
 }
+.authorization__false {
+  padding: 5px 0;
+  color: #9ad8ed;
+}
 
 .modal {
   justify-content: center;
