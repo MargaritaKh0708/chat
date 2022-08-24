@@ -15,7 +15,7 @@
         width: 100%;
     }
 
-        &-wrapper{
+    &-wrapper{
     box-shadow: 8px 8px 17px 1px $c-outgoing-msg-bg;
     border: 1px solid $c-separator;
     @extend .authorization__form;

@@ -1,21 +1,8 @@
 import {useGlobalContext, IChatOwnerInfo  } from 'components/context/GlobalContext'
-import { ChatPage } from "components/Pages/ChatPage";
 import { GoogleLogin } from "react-google-login";
 import { useNavigate } from "react-router-dom";
 import {useState} from 'react'
 
-// export interface IOnSuccessResProfileObj {
-//     email: string;
-// familyName: string;
-// givenName: string;
-// googleId: string;
-// imageUrl: string;
-// name: string;
-// }
-
-// export interface IOnSuccessRes {
-//     profileObj:IOnSuccessResProfileObj;
-// }
 
 const googleClientId =
   "1026527850509-u65p8e5gp98cjeqvdppsnfaj3mlt46av.apps.googleusercontent.com";
@@ -25,8 +12,9 @@ export const LoginBtn: React.FC = () => {
 let navigate = useNavigate();
 const [error, setError] = useState<boolean>(false) // for error msg 
 
-const {chatOwnerInfo, setChatOwnerInfo} = useGlobalContext();
+const {setChatOwnerInfo} = useGlobalContext();
 
+//OnSuccess Handler
   const onSuccess = (response: any) => {
     navigate('/chat');
 
@@ -41,6 +29,7 @@ const {chatOwnerInfo, setChatOwnerInfo} = useGlobalContext();
 
   };
 
+  //OnFailure handler
   const onFailure = (response: any) => {
     setError(true);
     navigate('/');

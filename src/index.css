@@ -17,6 +17,7 @@
 }
 @media screen and (max-width: 860px) {
   .header__title {
+    font-weight: 400;
     font-size: 14px;
   }
 }
@@ -333,6 +334,9 @@ ul {
   border: 1px solid #dbdbdb;
   flex: 1;
 }
+.chat-menu.hidden {
+  display: none;
+}
 
 .extended-chat {
   border-right: 1px solid #dbdbdb;
@@ -346,6 +350,19 @@ ul {
 }
 .extended-chat__content {
   flex: 1 0 auto;
+}
+.extended-chat__back-btn {
+  color: #656565;
+  font-weight: 500;
+  background: none;
+  font-size: 12px;
+  display: none;
+  border: none;
+}
+@media screen and (max-width: 800px) {
+  .extended-chat__back-btn {
+    display: block;
+  }
 }
 .extended-chat__header {
   border-bottom: 1px solid #dbdbdb;

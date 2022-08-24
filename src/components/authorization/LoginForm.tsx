@@ -1,9 +1,9 @@
-import { useGlobalContext, IChatOwnerInfo } from "components/context/GlobalContext";
+import { useGlobalContext} from "components/context/GlobalContext";
+import { LogOutBtn } from "./LogOutBtn";
 import { Link } from "react-router-dom"
 import { LoginBtn } from "./LoginBtn"
 import { gapi } from "gapi-script"
 import { useEffect} from "react"
-import { LogOutBtn } from "./LogOutBtn";
 
 
 const googleClientId = "1026527850509-u65p8e5gp98cjeqvdppsnfaj3mlt46av.apps.googleusercontent.com"
@@ -19,7 +19,6 @@ export const LoginForm: React.FC= () => {
                 scope: ''
             })
         };
-
         gapi.load('client:auth2', start);
     })
 

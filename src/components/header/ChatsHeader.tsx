@@ -1,13 +1,13 @@
 import {useGlobalContext} from 'components/context/GlobalContext'
 import {LogOutBtn}  from 'components/authorization/LogOutBtn'
-import default_avatar from 'assets/images/default.jpeg';
+import default_avatar from 'assets/images/default.webp';
 import {Avatar } from 'components/UI/avatar/Avatar';
 import search from 'assets/images/search.png';
 
 
 interface IChatsHeaderProps {
-    inputValue:string;
     inputValueHandler:(value:string)=> void;
+    inputValue:string;
 }
 
 export const ChatsHeader: React.FC<IChatsHeaderProps>= ({inputValue, inputValueHandler}) => {

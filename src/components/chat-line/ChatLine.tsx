@@ -23,7 +23,7 @@ interface IChatLineProps {
 
 export const ChatLine: React.FC<IChatLineProps>= ({item, setChooseUserDataHandler}) => {
 
-
+    //Formatting the time string
     const lastMsgDate:string[] = item.messages.length?item.messages[item.messages.length-1].time[0].split('.'): [''];
     const lastMsgMounth:string = lastMsgDate.splice(1,1).toString();
     const lastMsgLetterMounth = lastMsgMounth==='01'?'Jan':lastMsgMounth==='02'?'Feb':lastMsgMounth==='03'?'Mar':lastMsgMounth==='04'?'Apr':lastMsgMounth==='05'?'May':lastMsgMounth==='06'?'Jun':lastMsgMounth==='07'?'Jul':lastMsgMounth==='08'?'Aug':lastMsgMounth==='09'?'Sep':lastMsgMounth==='10'?'Oct':lastMsgMounth==='11'?'Nov':'Dec'

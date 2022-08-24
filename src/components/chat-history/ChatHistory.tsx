@@ -1,7 +1,5 @@
-import {IChatLineItemProps, IMessagesItem } from "components/chat-line/ChatLine";
-import { useGlobalContext } from 'components/context/GlobalContext';
+import {IChatLineItemProps } from "components/chat-line/ChatLine";
 import { Avatar } from "components/UI/avatar/Avatar";
-import { useEffect , useState} from "react";
 
 export interface IChatHistoryProps {
   choosed_chat:IChatLineItemProps;

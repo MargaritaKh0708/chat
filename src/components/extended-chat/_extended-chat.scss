@@ -13,6 +13,19 @@
         flex: 1 0 auto;
     }
 
+    &__back-btn {
+        color: $c-titles-font;
+        font-weight: 500;
+        background: none;
+        font-size: 12px;
+        display: none;
+        border: none;
+
+        @media screen and (max-width:800px){
+            display: block;            
+        }
+    }
+
     &__header {
         border-bottom: 1px solid $c-separator;
         background: $c-light-grey;
