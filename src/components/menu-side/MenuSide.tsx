@@ -1,6 +1,7 @@
-import { ChatList } from "components/chat-list/ChatList"
-import { ChatsHeader } from "components/header/ChatsHeader"
+import { useGlobalContext } from 'components/context/GlobalContext'
 import {IChatLineItemProps} from 'components/chat-line/ChatLine'
+import { ChatsHeader } from "components/header/ChatsHeader"
+import { ChatList } from "components/chat-list/ChatList"
 import {useState } from 'react'
 
 interface IMenuSideProps {
@@ -10,7 +11,7 @@ interface IMenuSideProps {
 export const MenuSide: React.FC<IMenuSideProps> = ({data}) => {
 
     const [searchValue, setSearchValue] = useState<string>('') // state for the searching value 
-
+    const {chooseId, openChatHistory} = useGlobalContext()
 
     return (
         <section className='chat-menu'>

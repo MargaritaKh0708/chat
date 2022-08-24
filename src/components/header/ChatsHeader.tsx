@@ -1,6 +1,8 @@
-import avatar from 'assets/images/avatar_1.webp';
-import search from 'assets/images/search.png';
+import {useGlobalContext} from 'components/context/GlobalContext'
+import {LogOutBtn}  from 'components/authorization/LogOutBtn'
+import default_avatar from 'assets/images/default.jpeg';
 import {Avatar } from 'components/UI/avatar/Avatar';
+import search from 'assets/images/search.png';
 
 
 interface IChatsHeaderProps {
@@ -10,9 +12,14 @@ interface IChatsHeaderProps {
 
 export const ChatsHeader: React.FC<IChatsHeaderProps>= ({inputValue, inputValueHandler}) => {
     
+    const {chatOwnerInfo} = useGlobalContext(); 
+
     return (
         <div className='header'>
-            <Avatar avatar={avatar} status={true}/>
+            <div className='header__user-info'> 
+            <Avatar avatar={chatOwnerInfo.chatOwnerPhoto || default_avatar} status={true}/>
+            <h3 className='header__title'>{chatOwnerInfo.chatOwnerName || 'Guest'}</h3>
+            </div>
             <label className='header__search'>
                 <img className = 'search' src={search} alt='search'/>
                 <input 
@@ -22,8 +29,9 @@ export const ChatsHeader: React.FC<IChatsHeaderProps>= ({inputValue, inputValueH
                 className='header__seach-field'
                 name='user-search'
                 type='text'
-                />
+                /> 
             </label>
+            {chatOwnerInfo.chatOwnerName?<LogOutBtn/>:false}
         </div>
     )
 }

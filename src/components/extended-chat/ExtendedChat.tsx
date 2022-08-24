@@ -2,7 +2,6 @@ import {useGlobalContext } from 'components/context/GlobalContext'
 import { ChatHistory } from 'components/chat-history/ChatHistory';
 import {IChatLineItemProps} from 'components/chat-line/ChatLine'
 import {EntryField} from 'components/entry-field/EntryField'
-import { ModalWindow } from 'components/modal/ModalWindow';
 import { Avatar } from 'components/UI/avatar/Avatar';
 import {useState}  from 'react'
 
@@ -16,13 +15,13 @@ export interface IExtendedChatProps {
 export const ExtendedChat: React.FC<IExtendedChatProps> = ({chats, choosed_id}) => {
 
     const [newMsg, setNewMsg] = useState<string>('');
-   
+    const {chooseId, openChatHistory} = useGlobalContext()
+    
     const renderItem:IChatLineItemProps[] = chats.filter(chat => chat.user_id === choosed_id.user_id);
 
-    const {chooseId} = useGlobalContext()
 
     return (
-        <div className='extended-chat'>
+        <div className={openChatHistory ? 'extended-chat':'extended-chat--hidden'}>
                 {renderItem.map(item => (
                     <div className='extended-chat__content' key={item.user_id}>
                         <div className='extended-chat__header'>

@@ -1,31 +1,23 @@
-import {useState} from 'react'
-import { GlobalContext, IChatOwnerInfo } from 'components/context/GlobalContext';
-import {data} from 'components/data/data'
-import {IMessagesItem} from 'components/chat-line/ChatLine'
+
 import {ExtendedChat} from 'components/extended-chat/ExtendedChat'
 import { MenuSide } from 'components/menu-side/MenuSide';
+import {data} from 'components/data/data'
 
 export interface IChoosedChatId {
     user_id:number,
     chat_id:number
   }
-  
+interface IChatPageProps {
+    choosedId: IChoosedChatId;
+}
 
-export const ChatPage: React.FC = () => {
+export const ChatPage: React.FC<IChatPageProps> = ({choosedId}) => {
 
-    const [chooseId, setChooseId] = useState<IChoosedChatId>({user_id:0,
-        chat_id:0});
-    const [userMessageHistory, setUserMessageHistory] = useState<IMessagesItem[]>([]);
-    const [chatOwnerInfo, setChatOwnerInfo] = useState<IChatOwnerInfo>({chatOwnerPhoto: '',
-    chatOwnerName: '',
-    chatOwnerId:0})
   
     return (
         <section className='chat-page container'>
-        <GlobalContext.Provider value={{chatOwnerInfo, setChatOwnerInfo, chooseId, setChooseId, userMessageHistory, setUserMessageHistory}}>
         <MenuSide data={data}/>
-        <ExtendedChat chats={data} choosed_id={chooseId}/>
-        </GlobalContext.Provider>
+        <ExtendedChat chats={data} choosed_id={choosedId}/>
         </section>
     )
 }

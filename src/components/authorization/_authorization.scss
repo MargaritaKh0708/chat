@@ -11,26 +11,45 @@
     display: flex;
     height: 100%;
 
+    & a {
+        width: 100%;
+    }
+
         &-wrapper{
-    box-shadow: 8px 8px 17px 1px $c-incoming-msg-bg;
+    box-shadow: 8px 8px 17px 1px $c-outgoing-msg-bg;
     border: 1px solid $c-separator;
     @extend .authorization__form;
     border-radius: 10px;
     padding: 30px;
     height: auto;
+        }
+    &-title {
+        padding: 10px 0;
+    }
 }
 
-&-text {
-    color: $c-font;
-}}
-
-    &__btn {
+    &__btn, &__trial{
+        font-family: 'Montserrat', sans-serif !important;
+        letter-spacing: 2px !important;
         border: 1px solid $c-separator !important;  
+        background-color: $c-dialog-bg !important;
         border-radius: 10px !important;
+        border: 1px solid $c-separator;
         box-shadow: none !important;
-        padding: 0 5px !important;
+        padding: 5px !important;
+        color:$c-titles-font;
+        margin-top: 5px;
         cursor: pointer;
+        width: 100%;
         opacity: 1;
+
+        &:hover {
+            background-color: $c-separator !important;
+        }
+
+        & div {
+            border-radius: 20px !important;
+        }
     } 
 
 }

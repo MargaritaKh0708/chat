@@ -22,17 +22,16 @@
 
 .modal__content {
     border: 1px solid $c-separator;
+    transform: translate(0, -100px);
     background-color: $c-white;
-    transform: scale(0.5);
     transition: 0.4s all;
     height: fit-content;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 20px;
     width: 50vw;
 
 }
 
 .modal__content.active {
     transform: scale(1);
-    
 }

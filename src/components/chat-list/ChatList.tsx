@@ -1,6 +1,6 @@
 import { ChatLine, IChatLineItemProps, IMessagesItem } from "components/chat-line/ChatLine"
 import {useGlobalContext} from 'components/context/GlobalContext'
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export interface IChatListProps {
     chats: IChatLineItemProps[];
@@ -10,7 +10,7 @@ export interface IChatListProps {
 export const ChatList: React.FC<IChatListProps> =({chats, searchRequets})=> {
 
   
-    const {setChooseId} = useGlobalContext();
+    const {setChooseId, setOpenChatHistory} = useGlobalContext();
 
 
     useEffect(() => {
@@ -44,7 +44,7 @@ export const ChatList: React.FC<IChatListProps> =({chats, searchRequets})=> {
             <h2 className='chat__title'> Chats</h2>
             <div className='chat__items'>{renderList.map(chat => 
                 <ChatLine
-                setChooseUserDataHandler={()=>{setChooseId({user_id:chat.user_id, chat_id:chat.chat_id})}}
+                setChooseUserDataHandler={()=>{setChooseId({user_id:chat.user_id, chat_id:chat.chat_id}); setOpenChatHistory(true)}}
                 key={chat.user_id}
                 item={chat}
                 />)}</div>

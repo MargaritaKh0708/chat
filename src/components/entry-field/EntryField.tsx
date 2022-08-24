@@ -1,4 +1,5 @@
 import { useGlobalContext } from 'components/context/GlobalContext';
+import sendIcon from 'assets/images/send.svg'
 import { ModalWindow } from 'components/modal/ModalWindow';
 import {
   IChatLineItemProps,
@@ -23,7 +24,7 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
   const [modalActive, setModalActive] = useState<boolean>(false) // for modal window
   const [needLoad, setNeedLoad] = useState<boolean>(false); // helper-value
   const [newMsgText, setNewMsgText] = useState<string>('') // for modal window content
-  const { chooseId, userMessageHistory, setUserMessageHistory } =
+  const { chooseId, userMessageHistory, setUserMessageHistory, chatOwnerInfo } =
     useGlobalContext(); // context values
 
     // Update msg history from LocalStorage (componentDidMount)
@@ -70,7 +71,7 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
     const message = {
     text: typeMsg,
     time: new Date().toLocaleString().split(','),
-    user_id: 66553,
+    user_id: chatOwnerInfo.chatOwnerId,
     chat_id: chooseId.chat_id,
     };
 
@@ -126,13 +127,15 @@ export const EntryField: React.FC<IEntryFieldProps> = ({
           }}
           className='type-line__send-btn'
         >
-          send
+          <img src={sendIcon} alt='send'/>
         </button>
       </label>
       <ModalWindow  active={modalActive}
       setActive={setModalActive}>
-        <p>{userName}</p>
-        <p>{newMsgText}</p>
+        <div className='new-msg'>
+        <p className='new-msg__user-name'>New message from: <span>{userName}</span></p>
+        <p className='new-msg__text'>{newMsgText}</p>
+        </div>
       </ModalWindow>
     </div>
   );

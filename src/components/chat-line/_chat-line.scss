@@ -25,6 +25,7 @@
 
     &__title {
         color: $c-titles-font;
+        font-weight: 400;
         font-size: 16px;
     }
 
@@ -34,14 +35,16 @@
         display: -webkit-box;
         line-height: 18px;
         overflow: hidden;
+        font-weight: 300;
         font-size: 14px;
         color: $c-font;
     }
 
     &__last-msg-time {
         color: $c-titles-font;
+        font-weight: 400;
         text-align: end;
-        font-size: 14px;
+        font-size: 12px;
         flex: 1 0 auto;
     }
 }

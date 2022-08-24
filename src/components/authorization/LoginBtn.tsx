@@ -1,7 +1,8 @@
+import {useGlobalContext, IChatOwnerInfo  } from 'components/context/GlobalContext'
 import { ChatPage } from "components/Pages/ChatPage";
 import { GoogleLogin } from "react-google-login";
-import { Link } from "react-router-dom";
-import {useGlobalContext } from 'components/context/GlobalContext'
+import { useNavigate } from "react-router-dom";
+import {useState} from 'react'
 
 // export interface IOnSuccessResProfileObj {
 //     email: string;
@@ -21,32 +22,42 @@ const googleClientId =
 
 export const LoginBtn: React.FC = () => {
 
+let navigate = useNavigate();
+const [error, setError] = useState<boolean>(false) // for error msg 
+
 const {chatOwnerInfo, setChatOwnerInfo} = useGlobalContext();
 
   const onSuccess = (response: any) => {
-    console.log("LOGIN SUCCESS! Current user:", response.profileObj);
+    navigate('/chat');
 
-    setChatOwnerInfo({chatOwnerId:response.profileObj.googleId, chatOwnerName:response.profileObj.name, chatOwnerPhoto:response.profileObj.imageUrl, });
-    console.log(response.profileObj.googleId)
+    const userData:IChatOwnerInfo = {
+      chatOwnerId: response.profileObj.googleId,
+      chatOwnerName: response.profileObj.name, 
+      chatOwnerPhoto: response.profileObj.imageUrl
+    }
+
+    localStorage.setItem('loginData', JSON.stringify(userData))
+    setChatOwnerInfo(userData);
+
   };
 
   const onFailure = (response: any) => {
+    setError(true);
+    navigate('/');
     console.log("LOGIN FAILED! res:", response);
   };
 
   return (
-    <Link to={{ onSuccess } ? "/chat" : "/"}>
       <div className="authorization__login">
         <GoogleLogin
           className="authorization__login-btn authorization__btn"
+          cookiePolicy={"single_host_origin"}
+          buttonText="Start with Google"
           clientId={googleClientId}
-          buttonText="Login with Google"
           onSuccess={onSuccess}
           onFailure={onFailure}
-          cookiePolicy={"single_host_origin"}
-          isSignedIn={true}
         />
+        <p className='authorization__false'>{error?'Upps, something going wrong. Try again or use trial version':''}</p>
       </div>
-    </Link>
   );
 };

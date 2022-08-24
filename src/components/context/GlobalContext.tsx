@@ -24,6 +24,8 @@ export type GlobalContextType = {
   setUserMessageHistory:(value:IMessagesItem[])=>void;
   chatOwnerInfo: IChatOwnerInfo;
   setChatOwnerInfo: Dispatch<SetStateAction<IChatOwnerInfo>>;
+  openChatHistory:boolean;
+  setOpenChatHistory:(value:boolean)=>void;
  
 };
 
@@ -36,7 +38,9 @@ export const GlobalContext = React.createContext<GlobalContextType>({
   chatOwnerInfo: { chatOwnerPhoto: '',
     chatOwnerName: '',
     chatOwnerId:0},
-  setChatOwnerInfo: ()=>{}
+  setChatOwnerInfo: ()=>{},
+  openChatHistory:false,
+  setOpenChatHistory:()=>{}
 });
 
 export const useGlobalContext = () => useContext(GlobalContext);

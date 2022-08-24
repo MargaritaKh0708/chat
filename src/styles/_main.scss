@@ -16,6 +16,7 @@ body {
 }
 
 .App {
+    font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
     overflow: hidden;
     
@@ -52,6 +53,10 @@ ul {
     padding: 0 30px;
     margin: 0 auto;
     width: 100%;
+
+    @media screen and (max-width:600px) {
+        padding: 0;
+    }
 }
 
 
@@ -81,101 +86,3 @@ ul {
     height: 100vh;
 }
 
-// // Main styles 
-
-// .title {
-
-//     font: {
-//         size: 24px;
-//         weight: 400;
-//     }
-
-// }
-
-// .opacity {
-//     background: linear-gradient(0deg, #F8F8F8 0%, #F8F8F8 25.31%, rgba(248, 248, 248, 0.9) 40.42%, rgba(248, 248, 248, 0.6) 74.79%, rgba(248, 248, 248, 0) 100%);
-//     position: absolute;
-//     width: 100%;
-//     z-index: 6;
-//     bottom: 0;
-// }
-
-// .arrow {
-//     // border-right: 1px solid $c-black;
-//     // border-top: 1px solid $c-black;
-//     transform: rotate(45deg);
-//     transition: .5s;
-//     cursor: pointer;
-//     display: block;
-//     height: 7px;
-//     width: 7px;
-// }
-
-// //Checkbox fake 
-// .checkbox-fake {
-//     // border: 1px solid $c-light-gray;
-//     display: inline-block;
-//     background: $c-white;
-//     position: relative;
-//     border-radius: 5px;
-//     height: 24px;
-//     width: 24px;
-// }
-
-// .form-checkbox:checked+.checkbox-fake {
-//     // background-color: $c-brand-yellow;
-//     border: $c-main-gray;
-// }
-
-// .checkbox-fake::before {
-//     -webkit-transform: translate(20%, -15%);
-//     transform: translate(20%, -15%);
-//     position: absolute;
-//     -webkit-transition: .5s;
-//     transition: .5s;
-//     font-size: 22px;
-//     // color: $c-text;
-//     content: "✓";
-//     opacity: 0;
-// }
-
-// .form-checkbox:checked+.checkbox-fake::before {
-//     opacity: 1;
-// }
-
-// //Radio fake 
-// .radio__fake {
-//     // border: solid 1px $c-text;
-//     display: inline-block;
-//     // background: $c-white;
-//     position: relative;
-//     border-radius: 50%;
-//     height: 20px;
-//     width: 20px;
-// }
-
-// // .radio__fake::before {
-// //     -webkit-transform: translate(-50%, -50%);
-// //     transform: translate(-50%, -50%);
-// //     border: 1px solid $c-text;
-// //     background: $c-brand-yellow;
-// //     border-radius: 50%;
-// //     position: absolute;
-// //     -webkit-transition: .5s;
-// //     transition: .5s;
-// //     display: block;
-// //     content: "";
-// //     height: 10px;
-// //     width: 10px;
-// //     opacity: 0;
-// //     left: 50%;
-// //     top: 50%;
-// // }
-
-// .radio-field:checked+.radio__fake::before {
-//     opacity: 1;
-// }
-
-// .radio-field {
-//     display: none;
-// }

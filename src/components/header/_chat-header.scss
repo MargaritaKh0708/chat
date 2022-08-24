@@ -7,6 +7,20 @@
     display: flex;
     gap: 20px;
 
+    &__user-info {
+      align-items: flex-end;
+      display: flex;
+      gap: 10px;
+    }
+
+    &__title {
+      color: $c-titles-font;
+
+      @media screen and (max-width:860px) {
+        font-size: 14px;
+    }
+    }
+
 
   &__search {
     background-color: $c-dialog-bg;

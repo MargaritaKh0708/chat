@@ -14,9 +14,6 @@ export const ChatHistory: React.FC<IChatHistoryProps> = ({
   choosed_id,
 }) => {
 
-  // // const [newChatMsg, setNewChatMsg] = useState<IMessagesItem[]>([])
-  // const { chooseId, userMessageHistory, setUserMessageHistory } =
-  //   useGlobalContext();
 
   return (
     <div className="chat-history">

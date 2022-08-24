@@ -17,10 +17,44 @@
     }
 
     &__input {
-        border-radius: 50%;
+        border-radius: 20px;
         padding: 10px;
         border: none;
         width: 80%;
+
+        &::placeholder {
+            font-family: 'Montserrat';
+            font-weight: 300;
+          }
+    }
+
+    &__send-btn {
+        background: none;
+        border: none;
+        width: 20px;
+    }
+}
+
+
+.new-msg{
+
+    &__user-name {
+        color:$c-titles-font;
+        font-size: 14px;
+
+        & span {
+            color: $c-blue;
+        }
+    }
+    &__text {
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        line-height: 18px;
+        overflow: hidden;
+        font-size: 12px;
+        margin-top: 5px;
+        color: $c-font;
     }
 }
 

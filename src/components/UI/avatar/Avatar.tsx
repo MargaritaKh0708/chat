@@ -9,7 +9,7 @@ interface IAvatarProps {
 
 export const Avatar: React.FC<IAvatarProps> = ({avatar, status, additional_class_name}) => {
     return (
-        <div className={`user-logo ${additional_class_name}`}>
+        <div className={`user-logo ${additional_class_name || ''}  `}>
                 <img src={avatar} alt ='user-avatar'/>
                 {status ? <img className = 'online' src={online} alt='on-line'/> : false}
             </div> 
